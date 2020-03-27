@@ -1,26 +1,24 @@
-import React from 'react';
-import logo from './logo.svg';
+import React, { useState } from 'react';
 import './App.css';
+import BreakInterval from './components/BreakInterval'
+import SessionLength from './components/SessionLength';
+import Timer from './components/Timer';
 
 function App() {
-  return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
-    </div>
-  );
-}
+  const [breakLength, setBreakLength] = useState(5)
+  const [sessionLength, setSessionLength] = useState(25)
+  const [timerMinute, setTimerMinute] = useState(sessionLength);
 
+  return (
+    <main>
+      <h2>Pomodoro Clock</h2>
+      <section className="interval-length-container">
+        <BreakInterval breakInterval={breakLength} />
+        <SessionLength sessionLength={sessionLength} />
+      </section>
+      <Timer timerMinute={timerMinute} />
+    </main>
+  );
+
+}
 export default App;
