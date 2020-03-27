@@ -1,7 +1,9 @@
-import React, { useState } from 'react'
+import React, { useState, useContext } from 'react'
+import { TimerContext } from '../store'
 
 const Timer = (props) => {
-  const { timerMinute } = props;
+  const [timerMinute, setTimerMinute] = useContext(TimerContext)
+
   const [isSession, setIsSession] = useState(true)
   const [timerSecond, setTimerSecond] = useState(0)
 

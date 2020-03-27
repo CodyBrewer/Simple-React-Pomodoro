@@ -1,8 +1,13 @@
-import React, { useState } from 'react'
+import React, { useState, useContext, useEffect } from 'react'
+import { TimerContext } from '../store'
 
 const SessionLength = () => {
-
+  const [timerMinute, setTimerMinute] = useContext(TimerContext)
   const [sessionLength, setSessionLength] = useState(25)
+
+  useEffect(() => {
+    setTimerMinute(sessionLength)
+  }, [sessionLength])
 
   function decreaseCounter() {
     if (sessionLength === 1) {
